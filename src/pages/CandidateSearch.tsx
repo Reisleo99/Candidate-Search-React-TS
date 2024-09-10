@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { searchGithub, searchGithubUser } from "../api/API";
+import { searchGithub } from "../api/API.tsx";
 
 const CandidateSearch: React.FC = () => {
   const [candidate, setCandidate] = useState<any>(null);
@@ -9,7 +9,7 @@ const CandidateSearch: React.FC = () => {
     // Fetch initial candidate data when the component loads
     const fetchCandidate = async () => {
       try {
-        const data = await searchGithub("developer");
+        const data = await searchGithub();
         setCandidate(data.items[0]); // assuming items is part of the API response
       } catch (err) {
         setError("Failed to fetch candidate");

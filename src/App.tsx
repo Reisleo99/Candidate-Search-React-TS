@@ -1,20 +1,20 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import CandidateSearch from "./pages/CandidateSearch";
-import SavedCandidates from "./pages/SavedCandidates";
-import ErrorPage from "./pages/ErrorPage";
+import { Outlet } from "react-router-dom";
+const token = import.meta.env.VITE_GITHUB_TOKEN;
+
+
 import Nav from "./components/Nav"; // if you have a Nav component
 
+
 const App: React.FC = () => {
+  console.log(import.meta.env.VITE_GITHUB_TOKEN);
+
   return (
-    <Router>
+    <div>
+      <p>{token.VITE_GITHUB_TOKEN}</p>
       <Nav />
-      <Routes>
-        <Route path="/" element={<CandidateSearch />} />
-        <Route path="/saved-candidates" element={<SavedCandidates />} />
-        <Route path="*" element={<ErrorPage />} />
-      </Routes>
-    </Router>
+      <Outlet /> {/* This renders the nested routes */}
+    </div>
   );
 };
 
