@@ -52,7 +52,7 @@ You can access the live version of the app [here](https://leoreis.netlify.app/).
 
 ## **Usage**
 
-1. Open your browser and go to `http://localhost:5173` to access the application.
+1. Open your browser and go to `https://leoreis-candidate-search.netlify.app/` to access the application.
 2. Use the search functionality to find GitHub users by location or other criteria.
 3. Save your favorite candidates to the **Saved Candidates** page for later reference.
 
@@ -60,12 +60,12 @@ You can access the live version of the app [here](https://leoreis.netlify.app/).
 
 ## **Technologies**
 
-- **React**: Frontend framework
-- **Vite**: Build tool for faster and leaner development
-- **TypeScript**: Type-safe JavaScript for better code quality
-- **React Router**: Used for managing routing and navigation
-- **Axios**: For making API requests to GitHub's API
-- **CSS**: Styling the UI
+- **React**
+- **Vite**
+- **TypeScript**
+- **React Router**
+- **Axios**
+- **CSS**
 - **GitHub API**: For fetching candidate/user data from GitHub
 
 ---
