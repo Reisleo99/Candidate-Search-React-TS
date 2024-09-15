@@ -10,6 +10,12 @@ const SavedCandidates: React.FC = () => {
     setSavedCandidates(saved);
   }, []);
 
+  const removeCandidate = (username: string) => {
+    const updatedCandidates = savedCandidates.filter(candidate => candidate.username !== username);
+    setSavedCandidates(updatedCandidates);
+    localStorage.setItem("savedCandidates", JSON.stringify(updatedCandidates));
+  };
+
   const filteredCandidates = savedCandidates.filter(candidate =>
     candidate.username?.toLowerCase().includes(filter.toLowerCase())
   );
@@ -35,6 +41,7 @@ const SavedCandidates: React.FC = () => {
               <th>Location</th>
               <th>Company</th>
               <th>Profile</th>
+              <th>Remove</th>
             </tr>
           </thead>
           <tbody>
@@ -51,6 +58,12 @@ const SavedCandidates: React.FC = () => {
                   <a href={candidate.html_url} target="_blank" rel="noopener noreferrer">
                     View Profile
                   </a>
+                </td>
+                <td>
+                  {/* Remove Button */}
+                  <button onClick={() => removeCandidate(candidate.username)} className="remove-button">
+                  Remove
+                  </button>
                 </td>
               </tr>
             ))}
