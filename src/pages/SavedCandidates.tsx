@@ -1,17 +1,30 @@
 import React, { useState, useEffect } from "react";
+import { Candidate } from "../interfaces/CandidateInterface.tsx";
 
 const SavedCandidates: React.FC = () => {
-  const [savedCandidates, setSavedCandidates] = useState<any[]>([]);
+  const [savedCandidates, setSavedCandidates] = useState<Candidate[]>([]);
+  const [filter, setFilter] = useState("");
 
   useEffect(() => {
     const saved = JSON.parse(localStorage.getItem("savedCandidates") || "[]");
     setSavedCandidates(saved);
   }, []);
 
+  const filteredCandidates = savedCandidates.filter(candidate =>
+    candidate.username?.toLowerCase().includes(filter.toLowerCase())
+  );
+
   return (
     <main>
-      {savedCandidates.length === 0 ? (
-        <p>No saved candidates to display.</p>
+      <h1>Saved Candidates</h1>
+      <input
+        type="text"
+        placeholder="Search candidates by username..."
+        value={filter}
+        onChange={(e) => setFilter(e.target.value)}
+      />
+      {filteredCandidates.length === 0 ? (
+        <p>No saved candidates match the search criteria.</p>
       ) : (
         <table className="table">
           <thead>
@@ -25,18 +38,18 @@ const SavedCandidates: React.FC = () => {
             </tr>
           </thead>
           <tbody>
-            {savedCandidates.map((candidate, index) => (
+            {filteredCandidates.map((candidate, index) => (
               <tr key={index}>
                 <td>
-                  <img src={candidate.avatar_url} alt={candidate.login} width="50" />
+                  <img src={candidate.avatar_url} alt={candidate.username} width="50" />
                 </td>
                 <td>{candidate.name || "N/A"}</td>
-                <td>{candidate.login}</td>
+                <td>{candidate.username}</td>
                 <td>{candidate.location || "N/A"}</td>
                 <td>{candidate.company || "N/A"}</td>
                 <td>
                   <a href={candidate.html_url} target="_blank" rel="noopener noreferrer">
-                    {candidate.html_url}
+                    View Profile
                   </a>
                 </td>
               </tr>
