@@ -6,7 +6,7 @@ const CandidateSearch: React.FC = () => {
   const [candidate, setCandidate] = useState<Candidate | null>(null);
   const [candidatesQueue, setCandidatesQueue] = useState<Candidate[]>([]);
   const [savedCandidates, setSavedCandidates] = useState<Candidate[]>([]);
-  const [error, setError] = useState<string | null>(null);
+  const [error] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchCandidate = async () => {
