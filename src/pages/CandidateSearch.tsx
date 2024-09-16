@@ -40,14 +40,14 @@ const CandidateSearch: React.FC = () => {
       const updatedSaved = [...savedCandidates, candidate];
       setSavedCandidates(updatedSaved);
       localStorage.setItem("savedCandidates", JSON.stringify(updatedSaved));
-      nextCandidate(); // Show the next candidate after saving
+      nextCandidate();
     }
   };
 
   const nextCandidate = () => {
     const next = candidatesQueue.shift();
     if (next) setCandidate(next);
-    else setCandidate(null); // No more candidates
+    else setCandidate(null);
   };
 
   if (error) {
