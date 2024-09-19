@@ -4,7 +4,7 @@
 The **Candidate Search Application** is a web application designed to search for GitHub users based on specific criteria like location and display their profiles. Users can also save and view their favorite candidates. The application interacts with the GitHub API to fetch user data and displays it in an easy-to-read format.
 
 ## **Live Demo**
-You can access the live version of the app [here](https://leoreis.netlify.app/).
+You can access the live version of the app [here]([https://leoreis.netlify.app/](https://leoreis-candidate-search.netlify.app/)).
 
 ---
 
